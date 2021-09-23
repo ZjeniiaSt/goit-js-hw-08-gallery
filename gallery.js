@@ -68,14 +68,14 @@ function onChangeImageKeyPress(event) {
   let nextIndex = currentIndex + 1;
   let previousIndex = currentIndex - 1;
 
-  if (event.keyCode === 37) {
+  if (event.keyCode === 39) {
     if (nextIndex >= gallery.length) {
       nextIndex = 0;
     }
     refs.image.src = gallery[nextIndex].original;
     refs.image.alt = gallery[nextIndex].description;
   }
-  if (event.keyCode === 39) {
+  if (event.keyCode === 37) {
     if (previousIndex < 0) {
       previousIndex = gallery.length - 1;
     }
