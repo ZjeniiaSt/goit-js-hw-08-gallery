@@ -73,11 +73,13 @@ function onChangeImageKeyPress(event) {
       nextIndex = 0;
     }
     refs.image.src = gallery[nextIndex].original;
+    refs.image.alt = gallery[nextIndex].description;
   }
   if (event.keyCode === 39) {
     if (previousIndex < 0) {
       previousIndex = gallery.length - 1;
     }
     refs.image.src = gallery[previousIndex].original;
+    refs.image.alt = gallery[previousIndex].description;
   }
 }
