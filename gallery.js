@@ -94,14 +94,20 @@ function onChangeImageKeyPress(event) {
     if (nextIndex >= gallery.length) {
       nextIndex = 0;
     }
-    refs.image.src = gallery[nextIndex].original;
-    refs.image.alt = gallery[nextIndex].description;
+
+    Object.assign(refs.image, {
+      src: gallery[nextIndex].original,
+      alt: gallery[nextIndex].description,
+    });
   }
   if (event.keyCode === 37) {
     if (previousIndex < 0) {
       previousIndex = gallery.length - 1;
     }
-    refs.image.src = gallery[previousIndex].original;
-    refs.image.alt = gallery[previousIndex].description;
+
+    Object.assign(refs.image, {
+      src: gallery[previousIndex].original,
+      alt: gallery[previousIndex].description,
+    });
   }
 }
