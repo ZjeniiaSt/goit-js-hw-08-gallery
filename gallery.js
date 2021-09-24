@@ -31,6 +31,7 @@ function createGalleryMarkUp(images) {
 
 refs.gallery.innerHTML = galleryItemRef.join("");
 
+//open/close
 refs.gallery.addEventListener("click", onOpenImage);
 refs.button.addEventListener("click", onCloseImage);
 refs.overlay.addEventListener("click", onCloseImage);
@@ -57,9 +58,10 @@ function onEscapePress(event) {
   }
 }
 
+//left/right
 function onChangeImageKeyPress(event) {
   let currentIndex = 0;
-  gallery.forEach((image) => {
+  gallery.map((image) => {
     if (image.original === refs.image.src) {
       currentIndex = gallery.indexOf(image);
     }
