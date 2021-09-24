@@ -35,11 +35,11 @@ refs.gallery.innerHTML = galleryItemRef.join("");
 refs.gallery.addEventListener("click", onOpenImage);
 refs.button.addEventListener("click", onCloseImage);
 refs.overlay.addEventListener("click", onCloseImage);
-document.addEventListener("keydown", onChangeImageKeyPress);
 
 function onOpenImage(event) {
   event.preventDefault();
   window.addEventListener("keydown", onEscapePress);
+  document.addEventListener("keydown", onChangeImageKeyPress);
   refs.lightbox.classList.add("is-open");
   refs.image.src = event.target.dataset.source;
   refs.image.alt = event.target.alt;
@@ -47,6 +47,7 @@ function onOpenImage(event) {
 
 function onCloseImage(event) {
   window.removeEventListener("keydown", onEscapePress);
+  document.removeEventListener("keydown", onChangeImageKeyPress);
   refs.lightbox.classList.remove("is-open");
   refs.image.src = "";
   refs.image.alt = "";
