@@ -41,17 +41,39 @@ function onOpenImage(event) {
   window.addEventListener("keydown", onEscapePress);
   document.addEventListener("keydown", onChangeImageKeyPress);
   refs.lightbox.classList.add("is-open");
-  refs.image.src = event.target.dataset.source;
-  refs.image.alt = event.target.alt;
+
+  //setImageAttributer(refs.image, {
+  // src: event.target.dataset.source,
+  // alt: event.target.alt,
+  // });
+
+  Object.assign(refs.image, {
+    src: event.target.dataset.source,
+    alt: event.target.alt,
+  });
 }
 
 function onCloseImage(event) {
   window.removeEventListener("keydown", onEscapePress);
   document.removeEventListener("keydown", onChangeImageKeyPress);
   refs.lightbox.classList.remove("is-open");
-  refs.image.src = "";
-  refs.image.alt = "";
+
+  //setImageAttributer(refs.image, {
+  // src: "",
+  // alt: "",
+  //});
+
+  Object.assign(refs.image, {
+    src: "",
+    alt: "",
+  });
 }
+
+// function setImageAttributer(image, attributes) {
+//   for (let key in attributes) {
+//     image.setAttribute(key, attributes[key]);
+//   }
+// }
 
 function onEscapePress(event) {
   if (event.keyCode === 27) {
@@ -61,11 +83,8 @@ function onEscapePress(event) {
 
 //left/right
 function onChangeImageKeyPress(event) {
-  let currentIndex = 0;
-  gallery.map((image) => {
-    if (image.original === refs.image.src) {
-      currentIndex = gallery.indexOf(image);
-    }
+  let currentIndex = gallery.findIndex((image) => {
+    return image.original === refs.image.src;
   });
 
   let nextIndex = currentIndex + 1;
